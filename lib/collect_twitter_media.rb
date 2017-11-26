@@ -7,20 +7,20 @@ module CollectTwitterMedia
   include FileOperation
   extend self
 
-  def save(directory, tweet_count=200, loop_count=1, start_tweet_id='') # HACK: 引数が多い
+  def save(directory, tweet_count=200, loop_count=1, start_tweet_id='') # HACK: too many argv
     twitter_client
     tweet_collection  = collect_tweets_with_loop(loop_count)
     save_directory    = make_directory_if_not_exist(directory)
     csv_filename      = create_csv_file(save_directory)
 
     tweet_collection.each do |tweet|
-      tweet = original_tweet(tweet) # リツイートの場合は正確に情報が取得できないため、オリジナルのツイートを取得する
+      tweet = original_tweet(tweet) # retweet is NOT correct data, so need to get from original tweet
       save_image_file(save_directory, tweet)
       append_csv_row(csv_filename, tweet)
     end
   end
 
-  # HACK: 冗長な気がする（ブロックを使ったりしたもっと良い書き方がある気がする……）
+  # HACK: TOO LONG...（can I use block?)
   def consumer_key(value)
     @consumer_key = value
   end
@@ -37,7 +37,6 @@ module CollectTwitterMedia
     @access_token_secret = value
   end
 
-  private
   def twitter_client
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = @consumer_key
@@ -47,7 +46,7 @@ module CollectTwitterMedia
     end
   end
 
-  # until_tweet_id は 「until_tweet_id『以下』」を示す
+  # 'until_tweet_id' is EQUAL OR LESS THAN 'until_tweet_id'
   def collect_tweets(until_tweet_id='', count=200)
     begin
       unless until_tweet_id.is_a?(Integer)
@@ -96,7 +95,7 @@ module CollectTwitterMedia
     media_uris = []
     if tweet.media?
       tweet.media.each do |media|
-        if Twitter::Media::Photo === media
+        if media.instance_of?(Twitter::Media::Photo)
           media_uris << media.media_url_https.to_s
         end
       end
@@ -109,12 +108,12 @@ module CollectTwitterMedia
   end
 
   def media_filename(media_uri)
-    media_uri.match(/https:\/\/pbs\.twimg\.com\/media\/(.*)\z/)[1]
+    media_uri.match(/https:\/\/pbs\.twimg\.com\/media\/(.*)\z/)[1] # with extension
   end
 
   def original_tweet(tweet)
     if tweet.retweet?
-      @client.status(tweet.attrs[:retweeted_status][:id], tweet_mode: "extended") # HACK: ここで「詰まる」ときがある
+      @client.status(tweet.attrs[:retweeted_status][:id], tweet_mode: "extended") # HACK: this occurs be slow response sometimes
     else
       tweet
     end
@@ -132,14 +131,14 @@ module CollectTwitterMedia
     end
   end
 
-  # 一つのツイートに複数の添付画像があった場合は全て保存する
+  # if several attachment image files exist, we save all ones
   def media_uri_and_filename(tweet)
     media_uri_and_filename = []
     media_uris(tweet).each do |media_uri|
       insert = {}
       insert['tweet_id']            = tweet.id
       insert['media_original_uri']  = media_original_uri(media_uri)
-      insert['media_filename']      = media_filename(media_uri) # 拡張子を含む
+      insert['media_filename']      = media_filename(media_uri)
       insert['screen_name']         = tweet.attrs[:user][:screen_name]
 
       media_uri_and_filename << insert
@@ -148,7 +147,8 @@ module CollectTwitterMedia
   end
 
   def create_csv_file(save_directory, base_filename='image_from_twitter')
-    filename = "#{save_directory}/#{base_filename}_#{Time.now.strftime("%Y%m%d_%H%M%S")}.csv"
+    now_time = Time.now.strftime("%Y%m%d_%H%M%S")
+    filename = "#{save_directory}/#{base_filename}_#{now_time}.csv"
     header = [
       'tweet_id',
       'screen_name',
@@ -163,7 +163,7 @@ module CollectTwitterMedia
     filename
   end
 
-  # HACK: 画像を保存するときに既に media_uri_and_filename を発動させており、重複している
+  # HACK: 'media_uri_and_filename' method is duplicated in 'save_image_file' method
   def append_csv_row(csv_filename, tweet)
     media_uri_and_filename(tweet).each do |media_data|
       row = [
@@ -180,7 +180,7 @@ module CollectTwitterMedia
     end
   end
 
-  # リツイートの場合に正しく動作しないため非推奨
+  # deprecated method because when tweet is retweet it doesn't work correctly
   def media_uris_and_filenames(tweets)
     media_uris_and_filenames = []
     tweets.each do |tweet|
@@ -189,9 +189,9 @@ module CollectTwitterMedia
     media_uris_and_filenames.flatten
   end
 
-  # 未使用
+  # not used
   def via_client(tweet)
-    source = tweet.source #=> "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>"
+    source = tweet.source # ex. "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>"
     source.match(/\A<a href=".*>(.*)<\/a>\z/)[1]
   end
 end

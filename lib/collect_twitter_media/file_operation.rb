@@ -18,7 +18,7 @@ module FileOperation
     File.delete(filename)
   end
 
-  def to_pathname(filename)
-    Pathname.new(Dir.pwd).join(filename).to_s
+  def to_pathname(filename_or_dirname)
+    Pathname.new(Dir.pwd).join(filename_or_dirname).to_s
   end
 end
