@@ -140,6 +140,7 @@ module CollectTwitterMedia
       insert['media_original_uri']  = media_original_uri(media_uri)
       insert['media_filename']      = media_filename(media_uri)
       insert['screen_name']         = tweet.attrs[:user][:screen_name]
+      insert['created_at']          = tweet.created_at
 
       media_uri_and_filename << insert
     end
@@ -155,6 +156,7 @@ module CollectTwitterMedia
       'original_filename',
       'save_filename',
       'uri',
+      'created_at',
     ]
     CSV.open(filename, 'w') do |csv_file|
       csv_file << header
@@ -172,6 +174,7 @@ module CollectTwitterMedia
         media_data['media_filename'],
         "@#{media_data['screen_name']}_#{media_data['tweet_id']}_#{media_data['media_filename']}",
         media_data['media_original_uri'],
+        media_data['created_at'],
       ]
 
       CSV.open(csv_filename, 'a') do |csv_file|
