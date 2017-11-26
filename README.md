@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/corselia/collect_twitter_media/tree/master.svg?style=svg)](https://circleci.com/gh/corselia/collect_twitter_media/tree/master) [![Coverage Status](https://coveralls.io/repos/github/corselia/collect_twitter_media/badge.svg)](https://coveralls.io/github/corselia/collect_twitter_media)
+[![CircleCI](https://circleci.com/gh/corselia/collect_twitter_media/tree/master.svg?style=svg)](https://circleci.com/gh/corselia/collect_twitter_media/tree/master) [![codecov](https://codecov.io/gh/corselia/collect_twitter_media/branch/master/graph/badge.svg)](https://codecov.io/gh/corselia/collect_twitter_media) [![Coverage Status](https://coveralls.io/repos/github/corselia/collect_twitter_media/badge.svg)](https://coveralls.io/github/corselia/collect_twitter_media)
 
 # CollectTwitterMedia
 

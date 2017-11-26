@@ -1,8 +1,14 @@
 require "bundler/setup"
 require "collect_twitter_media"
 
+require 'simplecov'
+SimpleCov.start
+
 require 'coveralls'
 Coveralls.wear!
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
