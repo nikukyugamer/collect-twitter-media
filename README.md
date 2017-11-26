@@ -42,20 +42,21 @@ CollectTwitterMedia.save('media_collection')
         - `@twitter_screen_name`
         - `tweet_id`
         - `media_id`
-    - the example of filename are below
+    - the example of filename
         - `@dhh_934687159870177697_dPi3GGKVoAERExB.jpg`
         - `@tenderlove_924694994511770368_IPi5IX-UEAAoL4v.jpg`
 - in the directory you specified, the csv files was created
-    - the columns of this csv file are below
+    - the columns of this csv file
         - `tweet_id`
         - `screen_name`
         - `original_filename`
         - `save_filename`
         - `uri`
+        - `created_at`
     - the filename of this csv file has 2 parts
         - `image_from_twitter`
         - `%Y%m%d_%H%M%S`
-    - the example of filename are below
+    - the example of filename
         - `image_from_twitter_20171126_171717.csv`
         - `image_from_twitter_20171224_210000.csv`
 
@@ -67,7 +68,7 @@ CollectTwitterMedia.save('media_collection')
 ![the_csv_file](the_csv_file.png "the_csv_file")
 
 # Options
-- the `save` method can take 4 argvs as below
+- the `save` method can take 4 argvs
     - the first:  the directory name to collect
     - the second: the collect count of tweet per loop (default: 200)
     - the third:  the loop count to collect media (default: 1)
@@ -89,3 +90,13 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## History
+
+#### 2017-11-26
+- Version 1.1.0
+    - add `created_at` column to the output CSV file
+
+#### 2017-11-26
+- Version 1.0.0
+    - first release
