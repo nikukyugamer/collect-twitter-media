@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/corselia/collect_twitter_media/tree/master.svg?style=svg)](https://circleci.com/gh/corselia/collect_twitter_media/tree/master) [![Coverage Status](https://coveralls.io/repos/github/corselia/collect_twitter_media/badge.svg)](https://coveralls.io/github/corselia/collect_twitter_media)
+
 # CollectTwitterMedia
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/collect_twitter_media`. To experiment with that code, run `bin/console` for an interactive prompt.
