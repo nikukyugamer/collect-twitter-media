@@ -4,6 +4,9 @@
 - You can collect media files (sorry, now image files only except for gif and mp4)
 - The source account is yourself (from your home timeline)
 
+# Required
+- `wget` command
+
 # Installation
 ```ruby
 $ gem install collect_twitter_media
@@ -30,8 +33,38 @@ CollectTwitterMedia.access_token_secret('YOUR_ACCESS_TOKEN_SECRET')
 - the first argv is the directory name to collect
 
 ```ruby
-CollectTwitterMedia.save('collect_media')
+CollectTwitterMedia.save('media_collection')
 ```
+
+#### 4. 🎆you have collected the media files and the csv file!🎆
+- in the directory you specified, the media files were collected
+    - the format of filename has 3 parts
+        - `@twitter_screen_name`
+        - `tweet_id`
+        - `media_id`
+    - the example of filename are below
+        - `@dhh_934687159870177697_dPi3GGKVoAERExB.jpg`
+        - `@tenderlove_924694994511770368_IPi5IX-UEAAoL4v.jpg`
+- in the directory you specified, the csv files was created
+    - the columns of this csv file are below
+        - `tweet_id`
+        - `screen_name`
+        - `original_filename`
+        - `save_filename`
+        - `uri`
+    - the filename of this csv file has 2 parts
+        - `image_from_twitter`
+        - `%Y%m%d_%H%M%S`
+    - the example of filename are below
+        - `image_from_twitter_20171126_171717.csv`
+        - `image_from_twitter_20171224_210000.csv`
+
+# Screenshot
+- the directory contains the media files and the csv file
+![the_result_directory](the_result_directory.jpg "the_result_directory")
+
+- the csv file
+![the_csv_file](the_csv_file.png "the_csv_file")
 
 # Options
 - the `save` method can take 4 argvs as below
