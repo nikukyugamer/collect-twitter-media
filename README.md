@@ -69,11 +69,11 @@ CollectTwitterMedia.save('media_collection')
 
 # Options
 - the `save` method can take 4 argvs
-    - the first:  the directory name to collect
-    - the second: the collect count of tweet per loop (default: 200)
-    - the third:  the loop count to collect media (default: 1)
+    - the first:  the directory name to collect [required]
+    - the second: the collect count of tweet per loop (default: 200) [optional]
+    - the third:  the loop count to collect media (default: 1) [optional]
         - Be careful about `API Rate limits`
-    - the fourth: the starting tweet id to collect media (default: the latest)
+    - the fourth: the starting tweet id to collect media (default: the latest) [optional]
 
 # Note
 - Please, please be careful about `API Rate limits`
