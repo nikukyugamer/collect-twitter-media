@@ -1,8 +1,8 @@
 [![CircleCI](https://circleci.com/gh/corselia/collect_twitter_media/tree/master.svg?style=svg)](https://circleci.com/gh/corselia/collect_twitter_media/tree/master) [![codecov](https://codecov.io/gh/corselia/collect_twitter_media/branch/master/graph/badge.svg)](https://codecov.io/gh/corselia/collect_twitter_media) [![Coverage Status](https://coveralls.io/repos/github/corselia/collect_twitter_media/badge.svg)](https://coveralls.io/github/corselia/collect_twitter_media)
 
 # Overview
-- You can collect media files (sorry, now image files only except for gif and mp4)
-- The source account is yourself (from your home timeline)
+- You can collect media file (sorry, now image files only except for gif and mp4)
+- The source account is yourself (the media file is collected from your home timeline)
 
 # Required
 - `wget` command
@@ -20,7 +20,7 @@ require 'collect_twitter_media'
 ```
 
 #### 2. set your Twitter API token
-- collect media files from the acoount belonging to this token
+- set the Twitter API token
 
 ```ruby
 CollectTwitterMedia.consumer_key('YOUR_CONSUMER_KEY')
@@ -37,7 +37,7 @@ CollectTwitterMedia.save('media_collection')
 ```
 
 #### 4. 🎆you have collected the media files and the csv file!🎆
-- in the directory you specified, the media files were collected
+- in the directory you specified, the media files have collected
     - the format of filename has 3 parts
         - `@twitter_screen_name`
         - `tweet_id`
@@ -45,7 +45,7 @@ CollectTwitterMedia.save('media_collection')
     - the example of filename
         - `@dhh_934687159870177697_dPi3GGKVoAERExB.jpg`
         - `@tenderlove_924694994511770368_IPi5IX-UEAAoL4v.jpg`
-- in the directory you specified, the csv files was created
+- in the directory you specified, the csv files has created
     - the columns of this csv file
         - `tweet_id`
         - `screen_name`
@@ -61,7 +61,7 @@ CollectTwitterMedia.save('media_collection')
         - `image_from_twitter_20171224_210000.csv`
 
 # Screenshot
-- the directory contains the media files and the csv file
+- the directory which contains the media files and the csv file
 ![the_result_directory](the_result_directory.jpg "the_result_directory")
 
 - the csv file
