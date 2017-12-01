@@ -73,12 +73,23 @@ CollectTwitterMedia.save('media_collection')
     - the second: the collect count of tweet per loop (default: 200) [optional]
     - the third:  the loop count to collect media (default: 1) [optional]
         - Be careful about `API Rate limits`
-    - the fourth: the starting tweet id to collect media (default: the latest) [optional]
+    - the fourth: the starting tweet id to collect media (String, default: the latest) [optional]
+
+- example
+
+```ruby
+CollectTwitterMedia.save('media_collection', 100, 4, '12345678901234')
+```
 
 # Note
 - Please, please be careful about `API Rate limits`
     - [Rate limits — Twitter Developers](https://developer.twitter.com/en/docs/basics/rate-limits)
     - [GET statuses/home\_timeline — Twitter Developers](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-home_timeline)
+
+# TODO
+- collect from any users timeline
+- collect by keyword search result
+- collect not only image but also gif and mp4
 
 ## Development
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
