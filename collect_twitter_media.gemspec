@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "collect_twitter_media/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "collect-twitter-media"
+  spec.name          = "collect_twitter_media"
   spec.version       = CollectTwitterMedia::VERSION
   spec.authors       = ["Osamu Takiya"]
   spec.email         = ["takiya@toran.sakura.ne.jp"]
 
   spec.summary       = %q{Collect media files from Twitter}
   spec.description   = %q{you can collect the media files such as .jpg, .png ... from Twitter's timeline}
-  spec.homepage      = "https://github.com/corselia/collect-twitter-media"
+  spec.homepage      = "https://github.com/corselia/collect_twitter_media"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
