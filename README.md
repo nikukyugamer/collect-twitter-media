@@ -45,7 +45,7 @@ CollectTwitterMedia.save('media_collection')
     - the example of filename
         - `@dhh_934687159870177697_dPi3GGKVoAERExB.jpg`
         - `@tenderlove_924694994511770368_IPi5IX-UEAAoL4v.jpg`
-- in the directory you specified, the csv files has created
+- in the directory you specified, the csv file has created
     - the columns of this csv file
         - `tweet_id`
         - `screen_name`
