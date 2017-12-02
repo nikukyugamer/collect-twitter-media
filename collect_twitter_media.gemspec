@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "collect_twitter_media/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "collect_twitter_media"
+  spec.name          = "collect-twitter-media"
   spec.version       = CollectTwitterMedia::VERSION
   spec.authors       = ["Osamu Takiya"]
   spec.email         = ["takiya@toran.sakura.ne.jp"]
