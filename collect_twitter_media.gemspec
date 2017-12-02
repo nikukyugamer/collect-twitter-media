@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Collect media files from Twitter}
   spec.description   = %q{you can collect the media files such as .jpg, .png ... from Twitter's timeline}
-  spec.homepage      = "https://github.com/corselia/collect_twitter_media"
+  spec.homepage      = "https://github.com/corselia/collect-twitter-media"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
