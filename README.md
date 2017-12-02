@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/corselia/collect_twitter_media/tree/master.svg?style=svg)](https://circleci.com/gh/corselia/collect_twitter_media/tree/master) [![codecov](https://codecov.io/gh/corselia/collect-twitter-media/branch/master/graph/badge.svg)](https://codecov.io/gh/corselia/collect-twitter-media) [![Coverage Status](https://coveralls.io/repos/github/corselia/collect-twitter-media/badge.svg)](https://coveralls.io/github/corselia/collect-twitter-media)
+[![CircleCI](https://circleci.com/gh/corselia/collect-twitter-media/tree/master.svg?style=svg)](https://circleci.com/gh/corselia/collect-twitter-media/tree/master) [![codecov](https://codecov.io/gh/corselia/collect-twitter-media/branch/master/graph/badge.svg)](https://codecov.io/gh/corselia/collect-twitter-media) [![Coverage Status](https://coveralls.io/repos/github/corselia/collect-twitter-media/badge.svg)](https://coveralls.io/github/corselia/collect-twitter-media)
 
 # Overview
 - You can collect media file (sorry, now image files only except for gif and mp4)
