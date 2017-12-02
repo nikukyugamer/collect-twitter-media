@@ -105,6 +105,10 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## History
 
 #### 2017-12-02
+- Version 1.1.2
+    - Oops! I don't know [the naming convention](https://maku77.github.io/ruby/coding-style.html) of Ruby gems. So I revert my changes at Version `1.1.1`
+
+#### 2017-12-02
 - Version 1.1.1
     - modify minor typo and etc in `README.md`
     - change repository name from `collect_twitter_media` to `collect-twitter-media`
