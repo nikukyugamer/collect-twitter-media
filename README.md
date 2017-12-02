@@ -104,6 +104,11 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## History
 
+#### 2017-12-02
+- Version 1.1.1
+    - modify minor typo and etc in `README.md`
+    - change repository name from `collect_twitter_media` to `collect-twitter-media`
+
 #### 2017-11-26
 - Version 1.1.0
     - add `created_at` column to the output CSV file
