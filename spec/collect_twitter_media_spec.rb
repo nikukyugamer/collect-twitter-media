@@ -1,8 +1,8 @@
 RSpec.describe CollectTwitterMedia do
   describe 'gem'
-  it "バージョン番号が設定されている" do
-    expect(CollectTwitterMedia::VERSION).not_to be nil
-  end
+    it "バージョン番号が設定されている" do
+      expect(CollectTwitterMedia::VERSION).not_to be nil
+    end
 
   before do
     @tweet_mock = double('tweet object of twitter gem')
@@ -23,8 +23,8 @@ RSpec.describe CollectTwitterMedia do
     ]
   end
 
-  describe 'Twitter API クライアント' do
-    context 'Key や Token' do
+  describe 'Twitter API クライアント の' do
+    context 'Key や Token について' do
       it 'consumer_key が正しく設定されている' do
         expect(CollectTwitterMedia.consumer_key('ABCDEFGHIJKLMN12345678')).to eq('ABCDEFGHIJKLMN12345678')
       end
@@ -42,7 +42,7 @@ RSpec.describe CollectTwitterMedia do
       end
     end
 
-    it '正しく定義されている' do
+    it 'が正しく定義されている' do
       CollectTwitterMedia.consumer_key('ABCDEFGHIJKLMN12345678')
       CollectTwitterMedia.consumer_secret('ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234')
       CollectTwitterMedia.access_token('1234567-ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890123456')
@@ -52,7 +52,7 @@ RSpec.describe CollectTwitterMedia do
   end
 
   describe 'CollectTweetMedia のクラスメソッド' do
-    describe 'tweetsオブジェクト' do
+    describe 'tweetsオブジェクト のメソッド' do
       context '#tweet_id_collection' do
         it 'tweet_id_collectionメソッドは、tweetsオブジェクトに含まれているツイートIDを配列で返す' do
           allow(@tweet_mock).to receive(:id)
@@ -72,7 +72,7 @@ RSpec.describe CollectTwitterMedia do
       end
     end
 
-    describe 'tweetオブジェクト' do
+    describe 'tweetオブジェクト のメソッド' do
       context '#original_tweet' do
         it 'tweetオブジェクトがリツイートでないならば返り値は元のtweetオブジェクトである' do
           allow(@tweet_mock).to receive(:retweet?).and_return(false)
@@ -86,7 +86,7 @@ RSpec.describe CollectTwitterMedia do
       end
 
       context '#media_uris' do
-        it 'tweetオブジェクトがメディア（画像、動画）の情報を持っている場合にその情報を返すか' do
+        it 'tweetオブジェクトがメディア（画像、動画）の情報を持っている場合にその情報を返す' do
           # dirty... should use 'Factory Bot' for instance...
           media = [
             @tweet_media_photo_mock,
@@ -113,24 +113,24 @@ RSpec.describe CollectTwitterMedia do
     end
 
     describe '取得したテキストの加工' do
-      context "メディア（画像、動画）" do
-        it "生の URI から 'original' のサイズのメディアを取得できる URI に変換する" do # TODO: 動画の場合が考慮されていない
+      context "メディア（画像、動画）関連のテキスト" do
+        it "生の URI から 'original' サイズを取得できる URI に変換する" do # TODO: 動画の場合が考慮されていない
           raw_media_uri = 'https://pbs.twimg.com/media/CS-Mn7iW4AA3Tak.png'
           expect(CollectTwitterMedia.media_original_uri(raw_media_uri)).to eq('https://pbs.twimg.com/media/CS-Mn7iW4AA3Tak.png:orig')
         end
 
-        it "ファイル名の部分を抽出する" do
+        it "「ファイル名」を抽出する" do
           raw_media_uri = 'https://pbs.twimg.com/media/CS-Mn7iW4AA3Tak.png'
           expect(CollectTwitterMedia.media_filename(raw_media_uri)).to eq('CS-Mn7iW4AA3Tak.png')
         end
 
-        it 'メディアファイルのファイル名の部分を、拡張子を除いて抽出する' do
+        it '「拡張子を除いたファイル名」を抽出する' do
           image_filename = 'CS-Mn7iW4AA3Tak.png'
           expect(CollectTwitterMedia.basename_of_image_file(image_filename)).to eq('CS-Mn7iW4AA3Tak')
         end
       end
 
-      it 'ツイートしたクライアント名を抽出する' do
+      it 'APIの戻り値から、ツイートしたクライアント名を抽出する' do
         allow(@tweet_mock).to receive(:source).and_return("<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>")
         expect(CollectTwitterMedia.via_client(@tweet_mock)).to eq('Twitter Web Client')
       end
@@ -147,7 +147,7 @@ RSpec.describe CollectTwitterMedia do
       end
 
       context '#to_pathname' do
-        context '引数' do
+        context '引数に指定する値について' do
           it '単純なディレクトリ名やファイル名の指定ならば、フルパスを返す' do
             pwd   = Pathname.new(Dir.pwd)
             argv  = 'CS-Mn7iW4AA3Tak.png'
